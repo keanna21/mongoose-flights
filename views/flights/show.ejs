@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Airline </div>
+  <div><%= flight.airline%></div>
+  <div> Airport</div>
+  <div><%= flight.airport %></div>
+  <div>Flight# </div>
+  <div><%= flight.flightNo %></div>
+  <div>departure</div>
+
+  <div><%= flight.departs %></div>
+  <div>Destinations</div>
+  <% flight.destinations.forEach(function(d) { %>
+   <div> <%=d.airport%><br><%= d.arrival%></div>
+<%  }) %>
+
+
+
+  <!-- start cast list -->
+
+  <!-- end cast list -->
+</section>
+<h2>Destinations</h2>
+<form id="add-review-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+  <label>airports</label>
+  <select name="airport">
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="AUS">AUS</option>
+    <option value="SAN">SAN</option>
+    <option value="DFW">DFW</option>
+  </select>
+  <label>Arrival Date</label>
+  <input type="datetime-local" name="arrival">
+  <input type="submit" value="Add destination">
+</form>
+
+<% console.log(flight, "this is the object") %>
